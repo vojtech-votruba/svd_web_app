@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { image_compression } from "./svd_comp/compress";
+import Heading from "./Heading";
+import Explain from "./Explain";
 
 function Convertor() {
 
@@ -7,25 +8,35 @@ function Convertor() {
   
     return (
       <>
+        {!selectedImage && <Heading />}
         {selectedImage && (
           <div>
             <div className="images">
-              <img
-                alt="not found"
-                className="uploaded"
-                width={"512px"}
-                src={URL.createObjectURL(selectedImage)}
-              />
-              <img
-                alt="not found"
-                className="compressed"
-                width={"512px"}
-                src={image_compression(URL.createObjectURL(selectedImage))}
-                id="new_image"
-              />
+              <div>
+                <h3>Original Image</h3>
+                <img
+                  alt="not found"
+                  className="uploaded"
+                  width={"512px"}
+                  src={URL.createObjectURL(selectedImage)}
+                />
               </div>
+              <div>
+                <h3>Compressed Image</h3>
+                <img
+                  alt="not found"
+                  className="uploaded"
+                  width={"512px"}
+                  src={URL.createObjectURL(selectedImage)}
+                />
+              </div>
+            </div>
             <br />
             <button className="delete" onClick={() => setSelectedImage(null)}>Remove</button>
+            <br />
+            <br />
+            <label>Resulting Rank of the Image<sup>1</sup> </label>
+            <input type="Number"></input>
           </div>
         )}
   
@@ -41,6 +52,7 @@ function Convertor() {
             setSelectedImage(event.target.files[0]);
           }}
         />
+        {selectedImage && <Explain />}
       </>
     );
   };
