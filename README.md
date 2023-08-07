@@ -1,4 +1,4 @@
-# SVD web app
+# SVD web app - not finished
 A simple React based app for visualizing SVD based image compression.
 
 This app is based on my previous Python implementation: https://github.com/vojtech-votruba/svd
